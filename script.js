@@ -226,7 +226,7 @@ allAuthors.forEach(name => {
 
 
         const li = document.createElement("li");
-        li.innerHTML = `${authors}. ${title}. ${citation}`;
+        li.innerHTML = `${authors} ${title}. ${citation}`;
         ol.appendChild(li);
       });
 
@@ -241,6 +241,7 @@ const navButtons = document.querySelectorAll("#navButtons button");
 const sections = {
   main: document.getElementById("main"),
   input: document.getElementById("input"),
+  output: document.getElementById("output"),
   howtouse: document.getElementById("howtouse"),
 };
 

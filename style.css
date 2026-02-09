@@ -98,3 +98,20 @@ td.total {
   font-weight: 700;
   text-decoration: underline;
 }
+
+#output .box {
+  margin-bottom: 20px;
+}
+
+#output label {
+  margin-right: 12px;
+}
+
+#output .note {
+  font-size: 0.85em;
+  color: #555;
+}
+
+#navButtons {
+    margin-bottom: 10px;
+}

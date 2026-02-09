@@ -6,13 +6,13 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h1>PubMed CSV Viewer</h1>
     <nav id="navButtons">
       <button data-target="main">メイン</button>
       <button data-target="input">入力</button>
+      <button data-target="output">出力</button>
       <button data-target="howtouse">使い方</button>
     </nav>
-
-    <h1>PubMed CSV Viewer</h1>
 
     <div class="box">
       <label>
@@ -116,10 +116,44 @@
         </div>
       </section>
     </section>
+    <section id="output" style="display: none">
+      <h2>出力設定</h2>
+      <div class="box">
+        <h3>出力する内容</h3>
+        <label><input type="checkbox" id="outTitle" checked />表題</label>
+        <label><input type="checkbox" id="outMemo" checked />備考</label>
+        <label><input type="checkbox" id="outDate" checked />作成日</label>
+        <label><input type="checkbox" id="outRange" checked />表示範囲</label>
+        <label
+          ><input type="checkbox" id="outTable" checked /> 年次集計表</label
+        >
+        <label
+          ><input type="checkbox" id="outGraph" checked /> 年次グラフ</label
+        >
+        <label><input type="checkbox" id="outList" checked /> 年別一覧</label>
+      </div>
+      <div class="box">
+        <h3>出力形式</h3>
+        <label><input type="checkbox" id="fmtHtml" checked /> HTML</label>
+        <label><input type="checkbox" id="fmtPdf" /> PDF</label>
+        <label><input type="checkbox" id="fmtDocx" /> DOCX</label>
+        <label><input type="checkbox" id="fmtTxt" /> TXT</label>
+      </div>
+      <div class="box">
+        <h3>出力</h3>
+        <label>
+          出力ファイル名：
+          <input type="text" id="outputName" placeholder="publications" />
+        </label>
+        <br /><br />
+        <button id="exportBtn">出力する</button>
+      </div>
+    </section>
     <section id="howtouse" style="display: none">
       <p>使い方の説明</p>
     </section>
 
     <script src="script.js"></script>
+    <script src="js/output.js"></script>
   </body>
 </html>
