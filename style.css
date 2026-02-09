@@ -1,18 +1,131 @@
+/* ===============================
+  Header & Navigation
+================================ */
+
 body {
-  font-family: system-ui, sans-serif;
-  margin: 32px;
-  color: #111;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 24px 32px;
   background: #fff;
+  color: #111;
 }
 
+/* ===============================
+  Title styling
+================================ */
+
 h1 {
-  font-size: 1.4rem;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 18px 0;
+  padding: 18px 0 16px 0;
+  position: relative;
+}
+
+/* 上下のアクセントライン */
+h1::before,
+h1::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 500px;
+  margin: 0 auto;
+
+}
+
+h1::before {
+  margin-bottom: 10px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(255, 0, 191),
+    transparent
+  );  
+}
+
+h1::after {
+  margin-top: 10px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgb(0, 217, 255),
+    transparent
+  );  
+}
+
+/* Navigation bar */
+#navButtons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-bottom: 10px;
   margin-bottom: 24px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Nav buttons */
+#navButtons button {
+  appearance: none;
+  background: #f6f6f6;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+/* Hover */
+#navButtons button:hover {
+  background: #eaeaea;
+  border-color: #999;
+}
+
+/* Active (JSで class="active" を付ける想定) */
+#navButtons button.active {
+  background: #222;
+  color: #fff;
+  border-color: #222;
+}
+
+/* 印刷時はナビを控えめに */
+@media print {
+  #navButtons {
+    border-bottom: none;
+  }
+
+  #navButtons button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 8px;
+    color: #000;
+  }
 }
 
 h2 {
-  font-size: 1.1rem;
-  margin: 0 0 12px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 28px 0 14px;
+  padding-bottom: 6px;
+  position: relative;
+}
+
+/* 下のアクセント */
+h2::after {
+  content: "";
+  display: block;
+  width: 300px;
+  height: 2px;
+  margin-top: 6px;
+  background: linear-gradient(
+    to right,
+    rgb(165, 165, 255),
+    transparent
+  );
 }
 
 .box {
@@ -112,6 +225,48 @@ td.total {
   color: #555;
 }
 
-#navButtons {
-    margin-bottom: 10px;
+/* ===============================
+  Footer
+================================ */
+
+.siteFooter {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid #ccc;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.siteFooter__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.siteFooter__title {
+  font-weight: 600;
+  color: #222;
+}
+
+.siteFooter__note {
+  font-size: 0.75rem;
+  color: #777;
+  margin-top: 2px;
+}
+
+.siteFooter__meta {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* 印刷時はさらに控えめに */
+@media print {
+  .siteFooter {
+    border-top: 1px solid #999;
+    color: #666;
+  }
 }
