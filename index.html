@@ -8,9 +8,9 @@
   <body>
     <h1>PubMed CSV Viewer</h1>
     <nav id="navButtons">
-      <button data-target="main">メイン</button>
-      <button data-target="input">入力</button>
-      <button data-target="output">出力</button>
+      <button data-target="main" class="active">表示画面</button>
+      <button data-target="input">入力設定</button>
+      <button data-target="output">出力設定</button>
       <button data-target="howtouse">使い方</button>
     </nav>
 
@@ -150,8 +150,84 @@
       </div>
     </section>
     <section id="howtouse" style="display: none">
-      <p>使い方の説明</p>
+      <h2>使い方の説明</h2>
+      <p>
+        本ツールは、PubMed からダウンロードした CSV
+        ファイルを用いて、論文業績を集計・可視化・出力するための Viewer
+        です。<br /><br />
+
+        <strong>① PubMed での準備</strong><br />
+        まず PubMed
+        にアクセスし、検索条件（著者名、所属、キーワード、年など）で論文を絞り込みます。<br />
+        検索結果画面で <strong>「Save」</strong> をクリックし、<strong
+          >「Selection」</strong
+        >
+        で対象を選択します（すべて／選択した論文など、用途に応じて可）。<br />
+        次に <strong>「Format」</strong> から一番下の
+        <strong>「CSV」</strong> を選択し、<strong>「Create file」</strong>
+        をクリックしてファイルを保存します。<br /><br />
+
+        <strong>② CSV ファイルの読み込み</strong><br />
+        保存した CSV ファイルを、この Viewer の
+        <strong>「ファイルを選択」</strong> に<br />
+        ・ドラッグ＆ドロップする、または<br />
+        ・クリックしてファイルを選択する<br />
+        ことで読み込みます。<br /><br />
+
+        <strong>③ メイン画面での確認</strong><br />
+        ファイルを読み込むと、メイン画面に年次集計表・グラフ・年別一覧が表示されます。<br />
+        著者の強調表示や、表示する年の範囲などを調整しながら内容を確認してください。<br /><br />
+
+        <strong>④ 入力画面での設定</strong><br />
+        入力画面では、表題・備考・作成日など、出力に必要な追加情報を入力します。<br />
+        これらは最終的な出力ファイルに反映されます。<br /><br />
+
+        <strong>⑤ 出力画面での出力</strong><br />
+        出力画面では、出力する内容（表・グラフ・一覧など）を選択し、<br />
+        出力形式として
+        <strong>HTML / PDF / DOCX / TXT</strong>
+        の中から必要なものにチェックを入れます。<br />
+        出力名を入力したうえで、出力ボタンを押すとファイルが生成されます。<br /><br />
+
+        <strong>⑥ 使い方の更新について</strong><br />
+        本ツールは今後も機能追加・改善を行う予定です。<br />
+        最新の操作方法や注意点については、この「使い方」ページを随時更新していきますので、必要に応じてご確認ください。
+      </p>
+      <p id="versioninfo">
+        <h2>バージョン情報</h2>
+        <p>version 1.001: 2026-02-09</p>
+      </p>
     </section>
+    <footer class="siteFooter">
+      <div class="siteFooter__inner">
+        <div class="siteFooter__left">
+          <div class="siteFooter__title">PubMed CSV Publications Viewer</div>
+          <div class="siteFooter__note">
+            Created with assistance from ChatGPT
+          </div>
+        </div>
+
+        <div class="siteFooter__right">
+          <div class="siteFooter__meta">© <span id="footerYear"></span></div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // フッター年を自動更新
+      document.getElementById("footerYear").textContent =
+        new Date().getFullYear();
+
+      //navの設定
+      document.querySelectorAll("#navButtons button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll("#navButtons button")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    </script>
 
     <script src="script.js"></script>
     <script src="js/output.js"></script>
