@@ -1,0 +1,100 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 32px;
+  color: #111;
+  background: #fff;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+}
+
+.box {
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-width: 900px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: right;
+}
+
+th {
+  background: #f5f5f5;
+  text-align: center;
+}
+
+td.year {
+  text-align: center;
+  font-weight: bold;
+}
+
+td.total {
+  font-weight: bold;
+}
+
+/* 年別一覧 */
+.yearBlock {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.yearBlock h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.yearBlock ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.yearBlock li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* 著者チェック */
+#authorArea {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.authorItem {
+  display: block;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+/* 強調 */
+.bold {
+  font-weight: 700;
+}
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.bold.underline {
+  font-weight: 700;
+  text-decoration: underline;
+}

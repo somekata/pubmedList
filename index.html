@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PubMed CSV Viewer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="navButtons">
+      <button data-target="main">メイン</button>
+      <button data-target="input">入力</button>
+      <button data-target="howtouse">使い方</button>
+    </nav>
+
+    <h1>PubMed CSV Viewer</h1>
+
+    <div class="box">
+      <label>
+        PubMed CSV ファイルを選択：
+        <input type="file" id="csvInput" accept=".csv" />
+      </label>
+      <p id="status">まだファイルは読み込まれていません。</p>
+    </div>
+    <section id="input" style="display: none">
+      <div class="box">
+        <h2>基本情報</h2>
+
+        <div style="margin-bottom: 8px">
+          <label>
+            表題：
+            <input
+              type="text"
+              id="titleInput"
+              placeholder="例：細菌学教室の業績"
+              style="width: 100%"
+            />
+          </label>
+        </div>
+
+        <div style="margin-bottom: 8px">
+          <label>
+            備考：
+            <input
+              type="text"
+              id="noteInput"
+              placeholder="例：PubMed検索結果（2026年4月取得）"
+              style="width: 100%"
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            作成日：
+            <input type="date" id="dateInput" />
+          </label>
+        </div>
+      </div>
+
+      <!-- ★ ここを追加（年の範囲指定） -->
+      <div class="box">
+        <h2>表示する年の範囲</h2>
+        開始年：
+        <input type="number" id="startYear" placeholder="例：2014" min="2008" />
+        〜 終了年：
+        <input type="number" id="endYear" placeholder="例：2026" min="2008" />
+      </div>
+      <div class="box">
+        <h2>著者（強調）</h2>
+        <!-- ★ 強調方法選択 -->
+        <div style="margin-bottom: 8px">
+          <label>
+            <input type="radio" name="highlightStyle" value="bold" checked />
+            太字
+          </label>
+          &nbsp;
+          <label>
+            <input type="radio" name="highlightStyle" value="underline" />
+            下線
+          </label>
+          &nbsp;
+          <label>
+            <input type="radio" name="highlightStyle" value="both" />
+            太字＋下線
+          </label>
+        </div>
+        <!-- ★ 追加：著者絞り込み -->
+        <input
+          type="text"
+          id="authorFilter"
+          placeholder="著者名で絞り込み（例：kan, oin）"
+          style="margin-bottom: 8px; width: 100%"
+        />
+
+        <div id="authorArea">CSVを読み込むと著者一覧が表示されます。</div>
+      </div>
+    </section>
+    <section id="main">
+      <section id="summary">
+        <div class="box">
+          <h2>年次集計表</h2>
+          <!-- ★ 追加 -->
+          <canvas
+            id="barChart"
+            width="800"
+            height="300"
+            style="margin-bottom: 16px"
+          ></canvas>
+          <div id="tableArea">CSVを読み込むと表示されます。</div>
+        </div>
+      </section>
+      <section id="list">
+        <div class="box">
+          <h2>年別一覧</h2>
+          <div id="listArea">CSVを読み込むと表示されます。</div>
+        </div>
+      </section>
+    </section>
+    <section id="howtouse" style="display: none">
+      <p>使い方の説明</p>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
