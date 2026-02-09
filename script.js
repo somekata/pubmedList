@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let allRows = [];
   let allAuthors = [];
-  let selectedAuthors = [];
+  let selectedAuthors = new Set();
   let authorFilterText = "";
   let highlightStyle = "bold"; // "bold" | "underline" | "both"
 
@@ -60,7 +60,10 @@ document
 
   function renderAll() {
     const filteredRows = filterByYear(allRows);
-    const yearly = aggregateByYearAndAuthor(filteredRows, selectedAuthors);
+    const yearly = aggregateByYearAndAuthor(
+  filteredRows,
+  Array.from(selectedAuthors)
+);
 
     renderYearTable(yearly, selectedAuthors);
     renderBarChart(filteredRows);   // ← ★復活
@@ -100,7 +103,6 @@ document
     });
 
     allAuthors = Array.from(set).sort();
-    selectedAuthors = [];
     authorArea.innerHTML = "";
 
 allAuthors.forEach(name => {
@@ -120,15 +122,17 @@ allAuthors.forEach(name => {
   cb.value = name;
 
   // ★ 既存のチェック状態を復元
-  cb.checked = selectedAuthors.includes(name);
+    cb.checked = selectedAuthors.has(name);
 
-  cb.addEventListener("change", () => {
-    selectedAuthors = Array.from(
-      authorArea.querySelectorAll("input:checked")
-    ).map(cb => cb.value);
-
+    cb.addEventListener("change", () => {
+    if (cb.checked) {
+        selectedAuthors.add(name);
+    } else {
+        selectedAuthors.delete(name);
+    }
     renderAll();
-  });
+    });
+
 
   label.appendChild(cb);
   label.append(" " + name);
@@ -210,7 +214,7 @@ allAuthors.forEach(name => {
         const title = p["Title"] || "";
         const citation = p["Citation"] || "";
 
-        selectedAuthors.forEach(name => {
+        Array.from(selectedAuthors).forEach(name => {
         const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         const re = new RegExp(`\\b${escaped}\\b`, "g");
 
